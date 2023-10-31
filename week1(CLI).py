@@ -42,6 +42,10 @@ class ToDoList:
             print("Task removed.")
         else:
             print("Invalid task index.")
+    def display_completed_tasks(self):
+        print("\nCompleted Tasks:")
+        for i, task in enumerate(self.completed_tasks, start=1):
+            print(f"{i}. {task.description} (Due: {task.due_date}, Priority: {task.priority})")
 
 def main():
     todo_list = ToDoList()
@@ -53,7 +57,8 @@ def main():
         print("3. Mark Task as Completed")
         print("4. Update Task")
         print("5. Remove Task")
-        print("6. Quit")
+        print("6. Display Completed Tasks")
+        print("7. Quit")
 
         choice = input("Enter your choice: ")
 
@@ -80,6 +85,8 @@ def main():
             task_index = int(input("Enter the task index to remove: "))
             todo_list.remove_task(task_index)
         elif choice == "6":
+            todo_list.display_completed_tasks()
+        elif choice == "7":
             print("Goodbye!")
             break
         else:
