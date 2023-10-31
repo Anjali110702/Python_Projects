@@ -8,6 +8,7 @@ class Task:
 class ToDoList:
     def __init__(self):
         self.tasks = []
+        self.completed_tasks = [] 
 
     def add_task(self, description, due_date, priority):
         task = Task(description, due_date, priority)
@@ -40,6 +41,15 @@ class ToDoList:
         if 1 <= task_index <= len(self.tasks):
             del self.tasks[task_index - 1]
             print("Task removed.")
+        else:
+            print("Invalid task index.")
+    def mark_task_completed(self, task_index):
+        if 1 <= task_index <= len(self.tasks):
+            task = self.tasks[task_index - 1]
+            task.completed = True
+            self.completed_tasks.append(task)  # Move the task to the completed_tasks list
+            self.tasks.pop(task_index - 1)  # Remove the task from the tasks list
+            print("Task marked as completed.")
         else:
             print("Invalid task index.")
     def display_completed_tasks(self):
